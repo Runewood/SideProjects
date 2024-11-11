@@ -1,0 +1,28 @@
+import os
+import shutil
+
+
+class CreateFolder:
+    def __init__(self, folder_name, folder_path):
+        # Initialize attributes
+        self.folder_name = folder_name
+        self.folder_path = folder_path
+
+    def folder_crunch(self):
+        # Create the full path for the folder
+        full_path = os.path.join(self.folder_path, self.folder_name)
+        
+        # Check if the folder already exists
+        if not os.path.exists(full_path):
+            os.makedirs(full_path)  # Create the folder
+            print(f"Folder '{self.folder_name}' created at '{self.folder_path}'.")
+        else:
+            print(f"Folder '{self.folder_name}' already exists at '{self.folder_path}'.")
+
+        # Call create_rvmat_files to generate the .rvmat files inside the created folder
+        create_rvmat_files(self.output_name, full_path, self.replacement_word)  # Use the new folder path for RVMAT files
+
+# Optionally, you can add code to run the GUI
+if __name__ == "__main__":
+    # Import and run the GUI here if you want to run both files
+    import gui
